@@ -1,4 +1,3 @@
-# cppzk
 # c++ 封装的zookeeper库 #
 ## 特点： ##
 1. c++封装，接口简单易用；
@@ -9,8 +8,7 @@
 ## 编译 ##
 
 依赖：
-1. boost头文件，因为使用了boost::function作为回调函数；
-2. zookeeper_mt.a，请从zookeeper源码自行编译。
+1. zookeeper_mt.a，请从zookeeper源码自行编译。
 
 linux下：
 
@@ -21,7 +19,7 @@ linux下：
 ## 如何使用 ##
 
 
-    #include "ZooKeeper.h" // 包含头文件
+    #include "zk.h" // 包含头文件
     
     ZooKeeper zk; // 定义对象
     zk.init("127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183")； // 初始化，参数为zookeeper服务器地址列表，格式为:ip:port,ip:port,...
