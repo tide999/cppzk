@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <vector>
 #include <boost/bind.hpp>
-#include "ZooKeeper.h"
+#include "zk.h"
 
 using namespace std;
 

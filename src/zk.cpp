@@ -7,7 +7,7 @@
 #include <sstream>
 #include <boost/bind.hpp>
 //#include <zookeeper/zookeeper_log.h>
-#include "ZooKeeper.h"
+#include "zk.h"
 
 using namespace std;
 
