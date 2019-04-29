@@ -1,7 +1,8 @@
-BOOST_DIR = ../../commonlibs/include
+ZOOKEEPER_DIR = /home/lab/zookeeper/include
+ZOOKEEPER_LIB = /home/lab/zookeeper/lib/
 CC = g++
 AR = ar
-CCFLAGS = -I${BOOST_DIR} -g
+CCFLAGS = -I${ZOOKEEPER_DIR} -g -L${ZOOKEEPER_LIB}
 LDFLAGS =
 
 OBJS = ZooKeeper.o

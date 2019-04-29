@@ -1,19 +1,26 @@
-#ifndef _ZOOKEEPER_H_
-#define _ZOOKEEPER_H_
-
-#include <zookeeper/zookeeper.h>
-#include <boost/function.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/noncopyable.hpp>
+#pragma once
 #include <stdio.h>
 #include <string>
 #include <vector>
 #include <map>
 #include <sstream>
 #include <typeinfo>
+#include <functional>
+#include <memory>
+#include "zookeeper/zookeeper.h"
 
-typedef boost::function<void (const std::string &path, const std::string &value)> DataWatchCallback;
-typedef boost::function<void (const std::string &path, const std::vector<std::string> &value)> ChildrenWatchCallback;
+typedef std::function<void (const std::string &path, const std::string &value)> DataWatchCallback;
+typedef std::function<void (const std::string &path, const std::vector<std::string> &value)> ChildrenWatchCallback;
+
+  class noncopyable
+  {
+   protected:
+      noncopyable() {}
+      ~noncopyable() {}
+   private:  // emphasize the following members are private
+      noncopyable( const noncopyable& );
+      const noncopyable& operator=( const noncopyable& );
+  };
 //
 class ZkRet
 {
@@ -31,7 +38,7 @@ private:
 };
 // class Zookeeper, 
 // thread safety: single ZooKeeper object should be used in single thread.
-class ZooKeeper : public boost::noncopyable
+class ZooKeeper : public noncopyable
 {
 public:
 	ZooKeeper();
@@ -77,7 +84,7 @@ private:
 		ZooKeeper *zk_;
 		std::string path_;
 	};
-	typedef boost::shared_ptr<Watch> WatchPtr;
+	typedef std::shared_ptr<Watch> WatchPtr;
 	class DataWatch: public Watch
 	{
 	public:
@@ -162,6 +169,3 @@ private:
 	//
 	FILE *logStream_;
 };
-
-
-#endif
